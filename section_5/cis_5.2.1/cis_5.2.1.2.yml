@@ -1,10 +1,9 @@
 {{ if .Vars.amzn2023cis_rule_5_2_1_2 }}
 file:
-  grub_enable_audit:
+  /etc/default/grub:
     title: 5.2.1.2 | Ensure auditing for processes that start prior to auditd is enabled
-    path: /etc/default/grub
     exists: true
-    contents:
+    contains:
     - '/GRUB_CMDLINE_LINUX_DEFAULT=".*audit=1/'
     meta:
       server: 2

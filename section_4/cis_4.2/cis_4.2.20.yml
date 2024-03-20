@@ -1,11 +1,10 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_2_20 }}
 file:
-  sshd_config_idle_timeout:
+  /etc/ssh/sshd_config:
     title: 4.2.20 | Ensure SSH Idle Timeout Interval is configured
-    path: /etc/ssh/sshd_config
     exists: true
-    contents:
+    contains:
     - '/^ClientAliveInterval {{ .Vars.amzn2023cis_sshd.clientaliveinterval }}/'
     - '/^ClientAliveCountMax {{ .Vars.amzn2023cis_sshd.clientalivecountmax }}/'
     meta:
